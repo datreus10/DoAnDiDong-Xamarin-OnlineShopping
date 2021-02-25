@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DoAnDiDong.CustomUI"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Đăng Nhập"
+    BackgroundImageSource=""
+    Shell.NavBarIsVisible="False">
+
+
+    <ContentPage.BindingContext>
+        <viewmodel:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Image
+                Margin="0,30,0,10"
+                HeightRequest="55"
+                Source="abalogo.png" />
+            <Label
+                Margin="0,0,0,80"
+                FontAttributes="Bold"
+                FontSize="22"
+                HorizontalTextAlignment="Center"
+                Text="Luôn lắng nghe và phục vụ nhu cầu của bạn"
+                TextColor="#ff6702"
+                TextTransform="Uppercase" />
+
+
+
+            <Frame
+                Padding="20,6"
+                BorderColor="#3fbffe"
+                CornerRadius="5"
+                HasShadow="False">
+                <StackLayout Orientation="Horizontal">
+
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="20"
+                        Source="user.png"
+                        WidthRequest="20" />
+                    <local:CustomEntry
+                        Margin="10,0"
+                        FontSize="18"
+                        Placeholder="Tên đăng nhập"
+                        PlaceholderColor="#A7ADC1"
+                        Text="{Binding KH.TenDangNhap, Mode=TwoWay}"
+                        WidthRequest="250" />
+                </StackLayout>
+
+            </Frame>
+
+            <Frame
+                Margin="0,20"
+                Padding="20,6"
+                BorderColor="#3fbffe"
+                CornerRadius="5"
+                HasShadow="False">
+                <StackLayout Orientation="Horizontal">
+
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="20"
+                        Source="password.png"
+                        WidthRequest="20" />
+                    <local:CustomEntry
+                        Margin="10,0"
+                        FontSize="18"
+                        IsPassword="True"
+                        Placeholder="Mật khẩu"
+                        PlaceholderColor="#A7ADC1"
+                        Text="{Binding KH.MatKhau, Mode=TwoWay}"
+                        WidthRequest="250" />
+                </StackLayout>
+
+            </Frame>
+
+            <Button
+                Margin="0,15,0,0"
+                BackgroundColor="#3fbffe"
+                Command="{Binding LoginCommand}"
+                CornerRadius="5"
+                FontSize="20"
+                Text="Đăng nhập"
+                TextColor="White"
+                TextTransform="None" />
+            <Label
+                Margin="0,20"
+                FontSize="18"
+                Text="Chưa có tài khoản? Hãy đăng ký" />
+            <Button
+                BackgroundColor="#39D1B4"
+                Command="{Binding RegisterCommand}"
+                CornerRadius="5"
+                FontSize="20"
+                Text="Đăng ký"
+                TextColor="White"
+                TextTransform="None" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

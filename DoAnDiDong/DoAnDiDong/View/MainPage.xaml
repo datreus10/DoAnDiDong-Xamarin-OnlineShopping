@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:DoAnDiDong.Control"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Trang chủ">
+
+    <ContentPage.BindingContext>
+        <viewmodel:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="SPSearchTemplate">
+            <Frame
+                Margin="0,5"
+                BorderColor="#EEF3FE"
+                CornerRadius="5">
+                <Grid ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Grid.Column="0"
+                        Aspect="AspectFit"
+                        HeightRequest="80"
+                        Source="{Binding Hinh}"
+                        WidthRequest="120" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="{Binding TenSP}"
+                        TextColor="#313F6D" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,10"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="{Binding DonGia, StringFormat='{0:0,##0} đ'}"
+                        TextColor="#3FBFFE" />
+                </Grid>
+            </Frame>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Shell.SearchHandler>
+        <controls:SPSearchHandle
+            DisplayMemberName="Name"
+            ItemTemplate="{StaticResource SPSearchTemplate}"
+            Placeholder="Nhập tên sản phẩm"
+            ShowsResults="true" />
+    </Shell.SearchHandler>
+
+   
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image
+                    Margin="0,20,0,10"
+                    HeightRequest="30"
+                    Source="abalogo.png" />
+                <CarouselView x:Name="MainCarouselView" HeightRequest="150">
+                    <CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>qc_1.jpg</x:String>
+                            <x:String>qc_2.jpg</x:String>
+                            <x:String>qc_3.jpg</x:String>
+                        </x:Array>
+                    </CarouselView.ItemsSource>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Aspect="Fill" Source="{Binding .}" />
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <StackLayout Margin="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="Top 10 sản phẩm nổi bật"
+                        TextColor="#4D4D4D" />
+                    <CollectionView
+                        Margin="0,5"
+                        HeightRequest="220"
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding LstSP_1}"
+                        SelectedItem="{Binding ItemSelected}"
+                        SelectionMode="Single"
+                        VerticalOptions="CenterAndExpand">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame
+                                        Margin="2,2,6,0"
+                                        Padding="10,18"
+                                        BorderColor="#EFF0F1"
+                                        CornerRadius="5"
+                                        HasShadow="True"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="160">
+                                        <StackLayout>
+                                            <Image
+                                                Aspect="AspectFit"
+                                                HeightRequest="100"
+                                                Source="{Binding Hinh}"
+                                                WidthRequest="100" />
+                                            <Label
+                                                Margin="0,5,0,0"
+                                                FontAttributes="Bold"
+                                                FontSize="20"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding TenSP}"
+                                                TextColor="#313F6D" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="18"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding DonGia, StringFormat='{0:0,##0} đ'}"
+                                                TextColor="#3FBFFE" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="Top 10 sản phẩm bán chạy"
+                        TextColor="#4D4D4D" />
+                    <CollectionView
+                        Margin="0,5"
+                        HeightRequest="220"
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding LstSP_2}"
+                        SelectedItem="{Binding ItemSelected}"
+                        SelectionMode="Single"
+                        VerticalOptions="CenterAndExpand">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame
+                                        Margin="2,2,6,0"
+                                        Padding="10,18"
+                                        BorderColor="#EFF0F1"
+                                        CornerRadius="5"
+                                        HasShadow="True"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="160">
+                                        <StackLayout>
+                                            <Image
+                                                Aspect="AspectFit"
+                                                HeightRequest="100"
+                                                Source="{Binding Hinh}"
+                                                WidthRequest="100" />
+                                            <Label
+                                                Margin="0,5,0,0"
+                                                FontAttributes="Bold"
+                                                FontSize="20"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding TenSP}"
+                                                TextColor="#313F6D" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="20"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding DonGia, StringFormat='{0:0,##0} đ'}"
+                                                TextColor="#3FBFFE" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

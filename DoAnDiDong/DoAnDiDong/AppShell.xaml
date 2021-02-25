@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="DoAnDiDong.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:DoAnDiDong.View">
+
+
+
+
+    <TabBar Route="main">
+        <Tab
+            Title="Trang chủ"
+            Icon="home.png"
+            Route="home">
+            <ShellContent ContentTemplate="{DataTemplate view:MainPage}" />
+        </Tab>
+        <Tab
+            Title="Danh mục"
+            Icon="list.png"
+            Route="danhmuc">
+            <ShellContent ContentTemplate="{DataTemplate view:DanhMuc}" />
+        </Tab>
+        <Tab
+            Title="Giỏ hàng"
+            Icon="cart.png"
+            Route="cart">
+            <ShellContent ContentTemplate="{DataTemplate view:GioHang}" />
+        </Tab>
+        <Tab
+            Title="Gợi ý"
+            Icon="explore.png"
+            Route="explore">
+            <ShellContent ContentTemplate="{DataTemplate view:KhamPhaPage}" />
+        </Tab>
+        <Tab
+            Title="Tài khoản"
+            Icon="user.png"
+            Route="account">
+            <ShellContent ContentTemplate="{DataTemplate view:TaiKhoan}" />
+        </Tab>
+        <!--<Tab Title="Admin" IsVisible="{Binding IsAdmin}">
+            <ShellContent ContentTemplate="{DataTemplate local:AdminPage}" />
+        </Tab>-->
+    </TabBar>
+
+
+
+
+</Shell>

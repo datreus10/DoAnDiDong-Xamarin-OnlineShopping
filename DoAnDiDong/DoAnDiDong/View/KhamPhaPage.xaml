@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.KhamPhaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    Title="Khám phá khu vực xung quanh">
+
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <maps:Map
+                x:Name="map"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsShowingUser="True">
+                <maps:Map.MapElements>
+                    <maps:Circle x:Name="zonePosition" />
+                </maps:Map.MapElements>
+            </maps:Map>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0.1,0,300,40"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Orientation="Horizontal">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text="Lọc theo sao: "
+                    VerticalOptions="Center" />
+                <Picker SelectedIndexChanged="Picker_SelectedIndexChanged" WidthRequest="120">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>0 sao trở lên</x:String>
+                            <x:String>1 sao trở lên</x:String>
+                            <x:String>2 sao trở lên</x:String>
+                            <x:String>3 sao trở lên</x:String>
+                            <x:String>4 sao trở lên</x:String>
+                            <x:String>5 sao trở lên</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                </Picker>
+            </StackLayout>
+
+
+            <!--<StackLayout
+                HeightRequest="40"
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Horizontal">
+                <Label Text="500" VerticalOptions="CenterAndExpand" />
+                <Slider
+                    x:Name="SliderZone"
+                    Maximum="450"
+                    MaximumTrackColor="DodgerBlue"
+                    Minimum="0"
+                    MinimumTrackColor="Violet"
+                    ValueChanged="SliderZone_ValueChanged"
+                    WidthRequest="250" />
+                <Label Text="5000 (m)" VerticalOptions="CenterAndExpand" />
+            </StackLayout>-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

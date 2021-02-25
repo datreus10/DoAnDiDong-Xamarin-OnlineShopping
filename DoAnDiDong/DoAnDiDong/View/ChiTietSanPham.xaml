@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.ChiTietSanPham"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Chi Tiết Sản Phẩm">
+
+
+    <ContentPage.BindingContext>
+        <viewmodel:ChiTietSanPhamViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <!--<Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="195" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+
+            </Grid.ColumnDefinitions>-->
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    Source="{Binding CTSP.Hinh}"
+                    WidthRequest="200" />
+                <Label
+                    Margin="0,20,0,5"
+                    FontAttributes="Bold"
+                    FontSize="25"
+                    Text="{Binding CTSP.TenSP}"
+                    TextColor="#233366" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Text="{Binding CTSP.DonGia, StringFormat='Giá: {0:0,##0} VNĐ'}"
+                    TextColor="#FF4C4C" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Mô tả"
+                    TextColor="Black" />
+                <Label
+                    FontFamily="arial"
+                    FontSize="17"
+                    Text="{Binding CTSP.MoTa}"
+                    TextColor="Black" />
+
+                <Button
+                    Margin="0,30,0,0"
+                    Padding="20,8"
+                    BackgroundColor="#3EC0FE"
+                    Command="{Binding MuaCommand}"
+                    CornerRadius="5"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                    Text="Thêm vào giỏ hàng"
+                    TextColor="White"
+                    TextTransform="None"
+                    VerticalOptions="StartAndExpand" />
+            </StackLayout>
+            <!--</Grid>-->
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

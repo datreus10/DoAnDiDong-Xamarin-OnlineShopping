@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.Profile"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Chi tiết tài khoản">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="#213162" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+            <Style x:Key="textStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="#9CA4B9" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+            </Style>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewmodel:ProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <Grid Margin="10" ColumnSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    Source="user_name.png" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    Source="couple.png" />
+                <Image
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    Source="date.png" />
+                <Image
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    Source="email.png" />
+                <Image
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    Source="phone.png" />
+
+                <Image
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    Source="user_2.png" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Style="{StaticResource labelStyle}"
+                    Text="Họ tên" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Style="{StaticResource labelStyle}"
+                    Text="Giới tính" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Style="{StaticResource labelStyle}"
+                    Text="Ngày sinh" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Style="{StaticResource labelStyle}"
+                    Text="Email" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Style="{StaticResource labelStyle}"
+                    Text="Số điện thoại" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Style="{StaticResource labelStyle}"
+                    Text="Tên đăng nhập" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Style="{StaticResource textStyle}"
+                    Text="{Binding KH.HoTen}" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Style="{StaticResource textStyle}"
+                    Text="{Binding GioiTinh}" />
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Style="{StaticResource textStyle}"
+                    Text="{Binding KH.NgaySinh, StringFormat='{0:dd/MM/yyyy}'}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Style="{StaticResource textStyle}"
+                    Text="{Binding KH.Email}" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Style="{StaticResource textStyle}"
+                    Text="{Binding KH.DienThoai}" />
+
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    Style="{StaticResource textStyle}"
+                    Text="{Binding KH.TenDangNhap}" />
+            </Grid>
+            <Button Command="{Binding updateUserImg}" Text="Cập nhật ảnh đại diện" />
+            <ActivityIndicator IsRunning="{Binding Loading, Mode=OneWay}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

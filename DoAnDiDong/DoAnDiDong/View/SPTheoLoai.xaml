@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.SPTheoLoai"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ItemClickBinding"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Sản Phẩm">
+
+
+    <ContentPage.BindingContext>
+        <viewmodel:SPTheoLoaiViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+
+
+            <ListView
+                x:Name="abc"
+                HasUnevenRows="True"
+                ItemsSource="{Binding LstSP}"
+                SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
+                SeparatorVisibility="None">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="4"
+                                BorderColor="#EEF3FE"
+                                CornerRadius="5">
+                                <Grid ColumnSpacing="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="{Binding Hinh}"
+                                        WidthRequest="120" />
+
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding TenSP}"
+                                        TextColor="#313F6D" />
+
+
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="0,10"
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding DonGia, StringFormat='{0:0,##0} đ'}"
+                                        TextColor="#3FBFFE" />
+
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

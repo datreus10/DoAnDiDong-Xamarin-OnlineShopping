@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.TaiKhoan"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DoAnDiDong.Converter"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Tài khoản">
+
+    <ContentPage.BindingContext>
+        <viewmodel:TaiKhoanViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Resources>
+        <!--<local:AllTrueMultiConverter x:Key="AllTrueConverter" />-->
+        <local:InverterConverter x:Key="InverterConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+
+            <StackLayout Orientation="Horizontal">
+                <Frame
+                    Padding="0"
+                    CornerRadius="100"
+                    HasShadow="False">
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="80"
+                        Source="{Binding UserImg}"
+                        WidthRequest="80" />
+                </Frame>
+                <Label
+                    Margin="0,10"
+                    FontSize="Large"
+                    Text="{Binding XinChao}"
+                    TextColor="#313F6D"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+
+            <Frame
+                Margin="0"
+                Padding="5"
+                BorderColor="#EAF0FE"
+                HasShadow="False">
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TaiKhoanCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Image
+                        Margin="5,0,10,0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="user_2.png"
+                        WidthRequest="20" />
+                    <Label
+                        FontSize="Large"
+                        Text="Tài khoản"
+                        VerticalOptions="Center" />
+                    <Image
+                        HeightRequest="20"
+                        HorizontalOptions="EndAndExpand"
+                        Source="next.png"
+                        WidthRequest="20" />
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                Margin="0"
+                Padding="5"
+                BorderColor="#EAF0FE"
+                HasShadow="False">
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HoaDonCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Image
+                        Margin="5,0,10,0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="order.png"
+                        WidthRequest="20" />
+                    <Label
+                        FontSize="Large"
+                        Text="Hóa đơn"
+                        VerticalOptions="Center" />
+                    <Image
+                        HeightRequest="20"
+                        HorizontalOptions="EndAndExpand"
+                        Source="next.png"
+                        WidthRequest="20" />
+                </StackLayout>
+            </Frame>
+
+            <Button
+                Margin="0,40"
+                BackgroundColor="#FF4081"
+                Command="{Binding LoginCommand}"
+                FontSize="20"
+                IsVisible="{Binding Login}"
+                Text="Đăng nhập"
+                TextColor="White"
+                TextTransform="None" />
+            <Button
+                Margin="0,40"
+                BackgroundColor="#FF4081"
+                Command="{Binding LogoutCommand}"
+                FontSize="20"
+                IsVisible="{Binding Login, Converter={StaticResource InverterConverter}}"
+                Text="Đăng xuất"
+                TextColor="White"
+                TextTransform="None" />
+
+
+            <!--<StackLayout Margin="0,0,0,100" VerticalOptions="EndAndExpand">
+                <Button
+                    BackgroundColor="#3EC0FC"
+                    Command="{Binding HoaDonCommand}"
+                    FontSize="20"
+                    IsVisible="{Binding Login, Converter={StaticResource InverterConverter}}"
+                    Text="Hóa đơn"
+                    TextColor="White"
+                    TextTransform="None" />
+
+
+
+                <Button
+                    Command="{Binding LoginCommand}"
+                    IsVisible="{Binding Login}"
+                    Text="Login" />
+                <Button
+                    BackgroundColor="#FF4081"
+                    Command="{Binding LogoutCommand}"
+                    FontSize="20"
+                    IsVisible="{Binding Login, Converter={StaticResource InverterConverter}}"
+                    Text="Đăng xuất"
+                    TextColor="White"
+                    TextTransform="None" />
+            </StackLayout>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

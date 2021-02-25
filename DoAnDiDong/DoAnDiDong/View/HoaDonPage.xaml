@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.HoaDonPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Hóa đơn">
+
+    <ContentPage.BindingContext>
+        <viewmodel:HoaDonViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <ListView
+                x:Name="abc"
+                HasUnevenRows="True"
+                ItemsSource="{Binding LstHD}"
+                SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
+                SelectionMode="Single"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="2,5"
+                                BorderColor="#EEF3FE"
+                                CornerRadius="5">
+                                <Grid ColumnSpacing="20" RowSpacing="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="20" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Image
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="{Binding Hinh}"
+                                        WidthRequest="120" />-->
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding MaHD, StringFormat='Mã hóa đơn: #{0}'}"
+                                        TextColor="#313F6D" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="0,10"
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding NgayHD, StringFormat='Ngày đặt hàng: {0}'}"
+                                        TextColor="#3FBFFE" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding TrangThai, StringFormat='Trạng thái: {0}'}"
+                                        TextColor="Black" />
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.KhamPhaDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DoAnDiDong.Converter"
+    Title="Chi tiết địa điểm">
+
+
+    <ContentPage.Resources>
+        <local:EmptyValueToBoolConverter x:Key="EmptyValueToBoolConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Hình ảnh về cửa hàng" />
+            <CarouselView
+                x:Name="CarouselViewImage"
+                HeightRequest="380"
+                ItemsSource="{Binding _Images}">
+
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Aspect="Fill" Source="{Binding .}" />
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Thông tin cửa hàng" />
+            <Label Text="{Binding _Location.vicinity, StringFormat='Địa chỉ: {0}'}" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding _Location.rating, StringFormat='Đánh giá: {0}/5'}" />
+                <Label Text="{Binding _Location.user_ratings_total, StringFormat='Tổng số lượt đánh giá: {0}'}" />
+            </StackLayout>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Nhận xét của khách hàng" />
+            <ListView
+                x:Name="ReviewView"
+                HasUnevenRows="True"
+                ItemsSource="{Binding _Reviews}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,5" Orientation="Horizontal">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="60"
+                                    Source="{Binding profile_photo_url}"
+                                    WidthRequest="60" />
+                                <StackLayout VerticalOptions="Center">
+                                    <Label FontAttributes="Bold" Text="{Binding author_name}" />
+                                    <Label IsVisible="{Binding text, Converter={StaticResource EmptyValueToBoolConverter}}" Text="{Binding text}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding rating, StringFormat='Đánh giá: {0}'}" />
+                                        <Image
+                                            Aspect="AspectFit"
+                                            HeightRequest="14"
+                                            Source="star.png"
+                                            WidthRequest="14" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label
+                x:Name="txtComment"
+                FontSize="18"
+                IsVisible="False"
+                Text="Không có đánh giá nào" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

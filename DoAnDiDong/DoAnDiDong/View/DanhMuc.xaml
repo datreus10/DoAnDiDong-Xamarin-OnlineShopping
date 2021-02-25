@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.DanhMuc"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ItemClickBinding"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Danh mục">
+
+    <ContentPage.BindingContext>
+        <viewmodel:DanhMucViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!--<Image
+                Aspect="AspectFit"
+                BackgroundColor="#003480"
+                HeightRequest="60"
+                Source="bookingLogo.png" />-->
+
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding DanhMuc}"
+                SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
+                SeparatorColor="#9CA4B9">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="18" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="100"
+                                    Source="{Binding HinhLSP}"
+                                    WidthRequest="100" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Padding="30"
+                                    FontAttributes="Bold"
+                                    FontSize="24"
+                                    Text="{Binding TenLSP}"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" />
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Aspect="AspectFit"
+                                    Source="next.png" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

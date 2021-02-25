@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DoAnDiDong.View.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DoAnDiDong.CustomUI"
+    xmlns:viewmodel="clr-namespace:DoAnDiDong.ViewModel"
+    Title="Đăng ký">
+
+    <ContentPage.BindingContext>
+        <viewmodel:RegisterViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Margin="10,20">
+            <Entry Placeholder="Tên đăng nhập" Text="{Binding KH_New.TenDangNhap, Mode=TwoWay}" />
+            <Entry
+                IsPassword="True"
+                Placeholder="Mật khẩu"
+                Text="{Binding KH_New.MatKhau, Mode=TwoWay}" />
+            <Entry
+                Keyboard="Email"
+                Placeholder="Email"
+                Text="{Binding KH_New.Email, Mode=TwoWay}" />
+
+
+
+            <Entry
+                Keyboard="Text"
+                Placeholder="Họ Tên"
+                Text="{Binding KH_New.HoTen, Mode=TwoWay}" />
+            <Entry
+                Keyboard="Text"
+                Placeholder="Địa chỉ"
+                Text="{Binding KH_New.DiaChi, Mode=TwoWay}" />
+            <Entry
+                Keyboard="Numeric"
+                Placeholder="Điện thoại"
+                Text="{Binding KH_New.DienThoai, Mode=TwoWay}" />
+
+            <Label Text="Ngày sinh" />
+            <DatePicker
+                Date="{Binding KH_New.NgaySinh, Mode=TwoWay}"
+                Format="dd/MM/yyyy"
+                MaximumDate="{Binding DateTime.Now}"
+                MinimumDate="01/01/1900" />
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontSize="18"
+                    Text="Nam hay nữ"
+                    VerticalOptions="Center" />
+                <StackLayout
+                    Margin="0,10"
+                    HorizontalOptions="EndAndExpand"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="18"
+                        Text="Nam"
+                        TextColor="#3ec0fe"
+                        VerticalOptions="Center" />
+                    <Switch HeightRequest="18" IsToggled="{Binding KH_New.GioiTinh, Mode=TwoWay}" />
+                    <Label
+                        FontSize="18"
+                        Text="Nữ"
+                        TextColor="#FF4081"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+            <!--<Button
+                Margin="0,20,0,0"
+                Command="{Binding RegisterCommand}"
+                Text="Đăng ký" />-->
+            <Button
+                Margin="0,15,0,0"
+                BackgroundColor="#39D1B4"
+                Command="{Binding RegisterCommand}"
+                CornerRadius="5"
+                FontSize="22"
+                Text="Đăng ký"
+                TextColor="White"
+                TextTransform="None" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
